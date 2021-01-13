@@ -159,7 +159,8 @@ class Carro {
       palancaActual +
       " a: " +
       this.getPalanca()
-    );
+      );
+      document.getElementById('data').innerHTML+= ``
 
     for (let i = 0; i < nivelPresion.length; i++) {
       this.setAcelerador(nivelPresion[i]);
