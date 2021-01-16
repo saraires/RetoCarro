@@ -1,10 +1,12 @@
 "use strict"
 
-let data = [];
+function imprimirDataEnPantalla(mensaje){
+  document.getElementById('data').innerHTML += `<li>${mensaje}</li>`;
+}
 
-document.write
+let ford = new Carro();
 
-function imprimirDataEnPantalla(){
+/*function imprimirDataEnPantalla(){
   let value = '';
   data.forEach(function (elemento, indice, array) {
     value += `<li class="list-group-item">${elemento}</tr>`;
@@ -12,23 +14,25 @@ function imprimirDataEnPantalla(){
   });
   document.getElementById('data').innerHTML = value;
 
-};
+};*/
 
 
 // document.getElementByClassName('list-group-item').innerHTML = "vanesita"
 
-function funcionPrincipal() {
+function encender(){
+  ford.interruptor(true);
+}
 
-  let ford = new Carro();
+
+function funcionPrincipal() {
+  /*
   console.log("Encender: ");
-  data.push(ford.interruptor(true));
-  data.push(ford.arrancar());
+  //data.push(ford.interruptor(true));
+  //data.push(ford.arrancar());
   let destino = new Ruta();
   ford.paradas(destino.getNumParada());
   console.log("Encender: ");
   
-  imprimirDataEnPantalla();
-  ford.interruptor();
   console.log("Arrancar: ");
   ford.arrancar();
   console.log("Giro: ");
@@ -44,20 +48,21 @@ function funcionPrincipal() {
   ford.paradas();
   console.log("h " + ford.cambiosFrenar(5));
   console.log("Reversar ");
-  ford.reversar();
+  ford.reversar();*/
 
 
 }
 
-funcionPrincipal();
-
+function funcionRuta(){
 let destino = new Ruta();
-console.log("Configuración del destino");
-console.log("Numero de paradas: " + destino.getNumParada());
-console.log("Distancia a recorrer: " + destino.getDistancia());
-console.log("Duración de la parada: " + destino.getDuracionParada());
-console.log("Cada cuanto parada: " + destino.cadaCuantoParada() + " km");
-console.log("Tiempo total del viaje: " + destino.calcularTiempoTotal(260, 20) + " horas");
+imprimirDataEnPantalla("Configuración del destino");
+imprimirDataEnPantalla("Numero de paradas: " + destino.getNumParada());
+imprimirDataEnPantalla("Distancia a recorrer: " + destino.getDistancia() + " km");
+imprimirDataEnPantalla("Duración de la parada: " + destino.getDuracionParada() + " seg");
+imprimirDataEnPantalla("Cada cuanto hace la parada: " + destino.cadaCuantoParada() + " km");
+//Mandar por parametros sacados del timer a la funcion de calcular Tiempo Total
+// imprimirDataEnPantalla("Tiempo total del viaje: " + destino.calcularTiempoTotal(260, 20) + " horas");
+}
 
 /*
 let ford = new Carro();

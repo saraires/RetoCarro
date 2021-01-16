@@ -111,14 +111,16 @@ class Carro {
   interruptor(flag) {
     if (this.validarEstadoReposo) {
       this.setInterruptor(flag);
-      mensaje = "El interruptor del carro esta: " +  (flag? " encendido" : " apagado");
+      imprimirDataEnPantalla("El interruptor del carro esta: " +  (flag? " encendido" : " apagado"));
+      funcionRuta();
+      this.arrancar();
     } else {
-      mensaje = "Coloque el carro en neutro y el freno de mano";
+      imprimirDataEnPantalla("Coloque el carro en neutro y el freno de mano");
     }
-    return mensaje;
   }
 
   arrancar() {
+    if(this.getInterruptor){
     this.setClutch(nivelPresion[3]);
     this.setFrenoPedal(true);
     this.setFrenoMano(false);
@@ -128,7 +130,9 @@ class Carro {
       this.setAcelerador(nivelPresion[i]);
       this.setClutch(nivelPresion[nivelPresion.length - 1 - i]);
     }
-    return mensaje = ("Acelerador: " + this.getAcelerador() + "  Clutch: " + this.getClutch() + "   " + " El auto ya esta en movimiento");
+    imprimirDataEnPantalla ("Acelerador: " + this.getAcelerador() + "  Clutch: " + this.getClutch());
+    imprimirDataEnPantalla(" El auto ya esta en movimiento")
+  }
   }
 
   cambiosAcelerar(palanca) {
