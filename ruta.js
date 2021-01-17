@@ -5,7 +5,7 @@ class Ruta{
         // numParada, distancia, duracionParada, tiempoTotal
         this._numParada = this.generarNumAleatorio(3,1);
         this._distancia = this.generarNumAleatorio(500,10);
-        this._duracionParada = this.generarNumAleatorio(5,1);
+        this._duracionParada = this.generarNumAleatorio(5, 1);
         this._cadaCuantoParada = this.cadaCuantoParada();
         this._tiempoTotal = 0;
     }
