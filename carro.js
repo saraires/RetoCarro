@@ -277,7 +277,6 @@ class Carro {
       this.frenar();
       this.cambiarAestadoReposo();
       imprimirDataEnPantalla("Llego a la parada");
-      this.tiempoParada();
       //imprimirDataEnPantalla("Tiempo parada........... );
     }
     this.reversar();
