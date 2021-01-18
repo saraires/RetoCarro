@@ -116,6 +116,17 @@ function resumenDelViaje(){
 }
 
 
+///////////////////////////// Funciones de prueba para el metodo setinterval en paradas
+
+function cadaCuantoHaceLaParada(){
+  return destino.cadaCuantoParada();
+}
+
+function kmRecorridoTotal(){
+  return destino.getDistancia();
+}
+
+
 
 /*
 let ford = new Carro();

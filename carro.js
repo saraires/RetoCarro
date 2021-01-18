@@ -5,6 +5,7 @@ const nivelPresion = ['Sin presion', 'Presion baja', 'Presion media', 'Presion a
 const velocidadesCambioPalanca = [10, 20, 40, 60, 80];
 const VELOCIDAD_MAXIMA = 120;
 let mensaje = "";
+let numeroActualParada = 0;
 
 /*$('body').on("keydown", function(e) { 
     if (e.which === 114) {
@@ -265,7 +266,64 @@ class Carro {
     }
     return "El carro está frenando";
   }
+
+  // paradas(numParadas) {
+  //   console.log("Entro paradas" + numParadas);
+  //   let distanciaparada = 0;
+  //   let acumDistanciaParada = 0;
+  //   let contadorDelNumeroDeParadas = 0;
+  //   let contadorParada = setInterval(() => {
+  //     imprimirDataEnPantalla("Comienza recorrido hacia la parada: " + (contadorDelNumeroDeParadas + 1));
+  //     console.log("PARADA NUMERO.......  " + contadorDelNumeroDeParadas);
+  //     this.acelerar();
+  //     this.frenar();
+  //     this.cambiarAestadoReposo();
+  //     imprimirDataEnPantalla("Llego a la parada");
+  //     this.tiempoParada()
+
+  //     distanciaparada = cadaCuantoHaceLaParada()
+  //     acumDistanciaParada += cadaCuantoHaceLaParada()
+  //     contadorDelNumeroDeParadas += 1;
+
+  //     console.log("Esto es distanciaParada antes del if:   " + distanciaparada);
+  //     console.log("Esto es acumParada antes del if:   " + acumDistanciaParada);
+
+
+  //     if(distanciaparada == cadaCuantoHaceLaParada()){
+  //       clearInterval(contadorParada);
+  //       this.contadorParada;
+  //       console.log("Esto es distanciaParada despues del if:   " + distanciaparada);
+  //       console.log("Esto es acumParada despues del if:   " + acumDistanciaParada);
+
+  //     } else if(acumDistanciaParada == kmRecorridoTotal()){
+  //       clearInterval(contadorParada);
+  //       console.log("Esto es acumParada terminando el if:   " + acumDistanciaParada);
+
+  //       this.reversar();
+  //       resumenDelViaje();
+  //     }
+
+  //   }, (funcionTiempoParadas() + 1));
+  // }
+
+  ///////// PRUEBA
+
+  // paradas(numParadas) {
+  //   console.log("Entro paradas" + numParadas);
+  //   for (let i = 0; i <= numParadas; i++) {
+  //     imprimirDataEnPantalla("Comienza recorrido hacia la parada: " + (i+ 1));
+  //     console.log("PARADA NUMERO.......  " + i);
+  //     this.acelerar();
+  //     this.frenar();
+  //     this.cambiarAestadoReposo();
+  //     imprimirDataEnPantalla("Llego a la parada");
+  //     //imprimirDataEnPantalla("Tiempo parada........... );
+  //   }
+  //   console.log("ESTO ES NUMERO ACTUAL PARADA DENTRO DEL METODO: ......... " + numeroActualParada);
+  //   this.tiempoParada()
+  // }
   
+
   paradas(numParadas) {
     console.log("Entro paradas" + numParadas);
     for (let i = 0; i <= numParadas; i++) {
@@ -331,6 +389,42 @@ class Carro {
       imprimirDataEnPantalla("No se puede reversar en este momento, se requiere que el carro esté en neutro y en estado de reposo");
     }
   }
+
+  ////// PRUEBA
+
+  // tiempoParada() {
+  //   let stop = 0;
+  //   let tiempoParadas = funcionTiempoParadas();
+  //   let numeroParada = funcionParadas();
+  //   let decrecer = tiempoParadas;
+
+  //   let tiempo = setInterval(() => {
+  //     const segundos = decrecer/1000
+
+  //     document.getElementById("botonPresionar").click();  
+  //     document.getElementById('TextoModal').innerHTML = (`${segundos}`);
+
+  //     //document.getElementById('contador').innerHTML = (`${segundos}`);
+  //     numeroActualParada += 1;
+
+  //       if(numeroActualParada == numeroParada){
+  //         clearInterval(tiempo);
+  //         this.reversar();
+  //         resumenDelViaje();
+  //       } else if(stop === tiempoParadas){
+  //         clearInterval(tiempo);
+  //         document.getElementById("cerrar").click();
+  //         this.paradas(numeroParada);
+  //         numeroActualParada += 1;
+  //         console.log("ESTO ES FUNCION PARADAS............    " + numeroParada);
+  //         console.log("ESTO ES NUMEROACTUALPARADAS:  ............    " + funcionParadas())
+  //       };
+  
+  //       decrecer -= 1000
+  //       stop += 1000;    
+  //     }, 1000);
+
+  // }
 
   tiempoParada() {
     let stop = 0;
