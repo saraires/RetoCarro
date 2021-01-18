@@ -112,7 +112,8 @@ class Carro {
   interruptor(flag) {
     if (this.validarEstadoReposo) {
       this.setInterruptor(flag);
-      imprimirDataEnPantalla("El interruptor del carro esta: " +  (flag? " encendido" : " apagado"));
+      // imprimirDataEnPantalla("El interruptor del carro esta: " +  (flag? " encendido" : " apagado"));
+      setInterval(() => { imprimirDataEnPantalla }, 1000);
       funcionRuta();
       this.arrancar();
     } else {
@@ -121,25 +122,25 @@ class Carro {
   }
 
   arrancar() {
-    if(this.getInterruptor){
-    this.setClutch(nivelPresion[3]);
-    this.setFrenoPedal(true);
-    imprimirDataEnPantalla("Freno del pedal esta: " + (this.getFrenoPedal()? "Presionado" : "Sin presionar"));
-    this.setFrenoMano(false);
-    imprimirDataEnPantalla("Freno de mano esta: " + (this.getFrenoMano()? "Activado" : "Desactivado"))
-    this.setPalanca(estadosPalanca[2]);
-    imprimirDataEnPantalla("La palanca esta en " + (this.getPalanca() == estadosPalanca[2]? "primera" : "neutro"))
-    this.setFrenoPedal(false);
-    imprimirDataEnPantalla("Freno del pedal esta: " + (this.getFrenoPedal()? "Presionado" : "Sin presionar"));
-    for (let i = 0; i < nivelPresion.length; i++) {
-      this.setAcelerador(nivelPresion[i]);
-      this.setClutch(nivelPresion[nivelPresion.length - 1 - i]);
+    if (this.getInterruptor) {
+      this.setClutch(nivelPresion[3]);
+      this.setFrenoPedal(true);
+      imprimirDataEnPantalla("Freno del pedal esta: " + (this.getFrenoPedal() ? "Presionado" : "Sin presionar"));
+      this.setFrenoMano(false);
+      imprimirDataEnPantalla("Freno de mano esta: " + (this.getFrenoMano() ? "Activado" : "Desactivado"))
+      this.setPalanca(estadosPalanca[2]);
+      imprimirDataEnPantalla("La palanca esta en " + (this.getPalanca() == estadosPalanca[2] ? "primera" : "neutro"))
+      this.setFrenoPedal(false);
+      imprimirDataEnPantalla("Freno del pedal esta: " + (this.getFrenoPedal() ? "Presionado" : "Sin presionar"));
+      for (let i = 0; i < nivelPresion.length; i++) {
+        this.setAcelerador(nivelPresion[i]);
+        this.setClutch(nivelPresion[nivelPresion.length - 1 - i]);
+      }
+      imprimirDataEnPantalla("Acelerador: " + this.getAcelerador());
+      imprimirDataEnPantalla("Clutch: " + this.getClutch());
+      imprimirDataEnPantalla(" El auto ya esta en movimiento")
+      this.paradas(funcionParadas());
     }
-    imprimirDataEnPantalla ("Acelerador: " + this.getAcelerador());
-    imprimirDataEnPantalla("Clutch: " + this.getClutch());
-    imprimirDataEnPantalla(" El auto ya esta en movimiento")
-    this.paradas(funcionParadas());
-  }
   }
 
   cambiosAcelerar(palanca) {
@@ -147,11 +148,8 @@ class Carro {
   }
 
   cambiosFrenar(palanca) {
-    console.log(" palanca" + palanca);
-    console.log(
-      "nueva palanca" + estadosPalanca[estadosPalanca.indexOf(palanca) - 1]
-    );
-
+    // console.log(" palanca" + palanca);
+    // console.log("nueva palanca" + estadosPalanca[estadosPalanca.indexOf(palanca) - 1]);
     return estadosPalanca[estadosPalanca.indexOf(palanca) - 1];
   }
 
@@ -160,7 +158,7 @@ class Carro {
       this.setClutch(nivelPresion[i]);
       this.setAcelerador(nivelPresion[nivelPresion.length - 1 - i]);
       //console.log(
-       // "Acelerador: " + this.getAcelerador() + "  Clutch: " + this.getClutch()
+      // "Acelerador: " + this.getAcelerador() + "  Clutch: " + this.getClutch()
       //);
     }
     let palancaActual = this.getPalanca();
@@ -172,7 +170,7 @@ class Carro {
       this.setAcelerador(nivelPresion[i]);
       this.setClutch(nivelPresion[nivelPresion.length - 1 - i]);
       //console.log(
-       // "Acelerador: " + this.getAcelerador() + "  Clutch: " + this.getClutch()
+      // "Acelerador: " + this.getAcelerador() + "  Clutch: " + this.getClutch()
       //);
     }
   }
@@ -182,7 +180,7 @@ class Carro {
       this.setClutch(nivelPresion[i]);
       this.setAcelerador(nivelPresion[nivelPresion.length - 1 - i]);
       //console.log(
-        //"Acelerador: " + this.getAcelerador() + "  Clutch: " + this.getClutch()
+      //"Acelerador: " + this.getAcelerador() + "  Clutch: " + this.getClutch()
       //);
     }
     let palancaActual = this.getPalanca();
@@ -194,17 +192,17 @@ class Carro {
       this.setAcelerador(nivelPresion[i]);
       this.setClutch(nivelPresion[nivelPresion.length - 1 - i]);
       //console.log(
-        //"Acelerador: " + this.getAcelerador() + "  Clutch: " + this.getClutch()
+      //"Acelerador: " + this.getAcelerador() + "  Clutch: " + this.getClutch()
       //);
     }
   }
 
   giroIzqAuto() {
     this.setDireccionalIzq(true);
-    imprimirDataEnPantalla("La direccional izquierda esta: " + (this.getDireccionalIzq()? "encendida" : "apagada"));
+    imprimirDataEnPantalla("La direccional izquierda esta: " + (this.getDireccionalIzq() ? "encendida" : "apagada"));
     imprimirDataEnPantalla("Giro izquierda");
     this.setDireccionalIzq(false);
-    imprimirDataEnPantalla("La direccional izquierda esta: " + (this.getDireccionalIzq()? "encendida" : "apagada"));
+    imprimirDataEnPantalla("La direccional izquierda esta: " + (this.getDireccionalIzq() ? "encendida" : "apagada"));
   }
 
   giroDerAuto() {
@@ -228,26 +226,26 @@ class Carro {
         a < velocidadesCambioPalanca.length
       ) {
         this.cambioDeCambiosAcelerar();
-        imprimirDataEnPantalla("Cuando la velocidad es de: " + (velocidadActual+1));
-        // console.log("Cambio (acelerar) cuando estaba en la velocidad de: " + velocidadesCambioPalanca[a]);
+        imprimirDataEnPantalla("Cuando la velocidad es de: " + (velocidadActual + 1));
+        console.log("Cambio (acelerar) cuando estaba en la velocidad de: " + velocidadesCambioPalanca[a]);
         //console.log("antes a: " + a);
         a++;
         //console.log("despues a: " + a);
       }
-      aleatorio = this.generarNumAleatorio(100,1);
-      if( aleatorio === 1){
+      aleatorio = this.generarNumAleatorio(100, 1);
+      if (aleatorio === 1) {
         this.giroDerAuto();
-      }else if(aleatorio === 2){
+      } else if (aleatorio === 2) {
         this.giroIzqAuto();
       }
       velocidadActual = i;
-      //console.log("La velocidad es: " + velocidadActual);
+      console.log("La velocidad es: " + velocidadActual);
     }
   }
 
-    generarNumAleatorio(max, min){
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
+  generarNumAleatorio(max, min) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 
   frenar() {
     this.setAcelerador(nivelPresion[0]);
@@ -260,26 +258,28 @@ class Carro {
       if (i === velocidadesCambioPalanca[a]) {
         this.cambioDeCambiosFrenar();
         imprimirDataEnPantalla("Cuando la velocidad es de: " + i);
-        //console.log("Cambio (frenar) cuando estaba en la velocidad de: " + velocidadesCambioPalanca[a]);
+        console.log("Cambio (frenar) cuando estaba en la velocidad de: " + velocidadesCambioPalanca[a]);
         a--;
       }
-      //console.log("La velocidad es: " + i);
+      console.log("La velocidad es: " + i);
     }
     return "El carro está frenando";
   }
-
+  
   paradas(numParadas) {
     console.log("Entro paradas" + numParadas);
     for (let i = 0; i <= numParadas; i++) {
-      imprimirDataEnPantalla("Comienza recorrido hacia la parada: " + (i+1));
+      imprimirDataEnPantalla("Comienza recorrido hacia la parada: " + (i + 1));
       console.log("PARADA NUMERO.......  " + i);
       this.acelerar();
       this.frenar();
       this.cambiarAestadoReposo();
       imprimirDataEnPantalla("Llego a la parada");
       //imprimirDataEnPantalla("Tiempo parada........... );
+      this.tiempoParada()
     }
     this.reversar();
+    resumenDelViaje();
   }
 
   estacionarias(flag) {
@@ -332,27 +332,29 @@ class Carro {
     }
   }
 
-  tiempoParada(){
+  tiempoParada() {
     let stop = 0;
-    let tiempoParadas = 5000;
+    let tiempoParadas = funcionTiempoParadas();
     let decrecer = tiempoParadas;
-    imprimirDataEnPantalla("TIEMPO PARADAS " + tiempoParadas);
 
     let tiempo = setInterval(() => {
-    const segundos = decrecer/1000
-    document.getElementById('contador').innerHTML = (`${segundos}`);
+      const segundos = decrecer/1000
 
-      if(stop === tiempoParadas){
-        clearInterval(tiempo);
-      }
+      document.getElementById("botonPresionar").click();  
+      document.getElementById('TextoModal').innerHTML = (`${segundos}`);
 
-      decrecer -= 1000
-      imprimirDataEnPantalla("TIEMPO PARADAS 2.0..... " + decrecer);
-      stop += 1000;
-      imprimirDataEnPantalla("STOP..... " + stop);
-      console.log(stop);
-      
-    }, 1000);
+      //document.getElementById('contador').innerHTML = (`${segundos}`);
+  
+        if(stop === tiempoParadas){
+          clearInterval(tiempo);
+          document.getElementById("cerrar").click();
+        }
+  
+        decrecer -= 1000
+        stop += 1000;
+        console.log(stop);
+        
+      }, 1000);
 
   }
 
@@ -377,8 +379,8 @@ class Carro {
     imprimirDataEnPantalla(`Se apaga la direccional ${texto}`);
   }*/
 
-  cabrilla() {}
-  apagar(){}
+  cabrilla() { }
+  apagar() { }
   velocidadAprox() { }
   velocidadMax() { }
 }

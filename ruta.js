@@ -14,7 +14,7 @@ class Ruta{
     getNumParada(){
         return this._numParada;
     }
-    getDistancia(){
+    getDistancia(){ 
         return this._distancia;
     }
     getDuracionParada(){

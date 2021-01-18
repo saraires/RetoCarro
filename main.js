@@ -1,5 +1,15 @@
 "use strict"
 
+/*let contador = 0
+let imprimirDataEnPantalla = setInterval((mensaje) => { 
+    document.getElementById('data').innerHTML += `<li>${mensaje}</li>`;
+    if (contador == 1){
+      clearInterval(imprimirDataEnPantalla);
+    }
+    contador++;
+}, 1000);*/
+
+
 function imprimirDataEnPantalla(mensaje) {
   document.getElementById('data').innerHTML += `<li>${mensaje}</li>`;
 }
@@ -78,11 +88,9 @@ function funcionRuta() {
   imprimirDataEnPantalla("Duración de la parada: " + destino.getDuracionParada() + " seg");
   imprimirDataEnPantalla("Cada cuanto hace la parada: " + destino.cadaCuantoParada() + " km");
   //Mandar por parametros sacados del timer a la funcion de calcular Tiempo Total
-  // imprimirDataEnPantalla("Tiempo total del viaje: " + destino.calcularTiempoTotal(260, 20) + " horas");
 }
 
 function funcionParadas() {
-  console.log("DESTINO.................." + destino.getNumParada());
   return destino.getNumParada();
 }
 
@@ -91,12 +99,28 @@ function funcionTiempoParadas() {
   return destino.getDuracionParada() * 1000;
 }
 
+function resumenDelViaje(){
+  let contador = 0;
+  for(let i = 0; i <= 120; i++){
+    contador += i;
+  }
+  let a = contador/120
+
+  console.log("ESTO ES contador: ............  " + contador);
+  console.log("ESTO ES A: ............  " + a);
+  
+  imprimirDataEnPantalla("RESUMEN DEL VIAJE")
+  imprimirDataEnPantalla("La velocidad maxima alcanzada fue de 120km/h");
+  imprimirDataEnPantalla("La velocidad promedio a la que viajo el carro fue de: " + a + "km/h");
+  imprimirDataEnPantalla("Tiempo total del viaje: " + destino.calcularTiempoTotal(120, 7) + " horas");
+}
+
 
 
 /*
 let ford = new Carro();
 
-console.log("Encender: ");
+console.log("Encender: ");wx
 ford.interruptor();
 console.log("Arrancar: ");
 ford.arrancar();

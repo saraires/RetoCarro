@@ -10,23 +10,52 @@
     <title>Document</title>
 </head>
 
-<body>
+<body style="background-color: black;">
 
     <div class="container-fluid" style="background-color: black;">
         <div class="row">
-            <div class="row col-md-8">
-                <img class="" src="Tablero del carro.jpg" alt="..." style="background-image: Tablero del carro;">
-                <a class="btn btn-success btn-lg" href='javascript:;' onclick="prueba();" role="button">
+            <div class="col-md-8" style="background-color: black;">
+                <img class="" src="Tablero del carro.jpg" alt="..."
+                    style="background-image:url(Tablero\ del\ carro.jpg); position: fixed; width: 65%;">
+                <a class="btn btn-success btn-lg" style="position: fixed; margin-top: 15px;" href='javascript:;'
+                    onclick="encender();" role="button">
                     Encender &raquo;
-                  </a>
-            </div> 
-            <div class="col-md-4" style="display: flex; background-color: white;">
-                <div class="panel panel-default"> 
-                    <h1 id="contador">hi</h1>
-                    <div class="panel-heading"><h3>Carro Automatico</h3></div>
+                </a>
+            </div>
+            <div class="col-md-4" style="display: flex; background-color: white; overflow-y: auto; height: 610px;">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3>Carro Automatico</h3>
+                    </div>
                     <div class="panel-body">
                         <ul id="data" class="list-group">
                         </ul>
+                        <br>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Button trigger modal -->
+            <button type="button" style="display: none;" class="btn btn-primary" id="botonPresionar" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
+                Launch demo modal
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Espere en la parada</h5>
+                        </div>
+                        <div class="modal-body" id="TextoModal">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" style="display: none;" class="btn btn-secondary" id="cerrar"
+                                data-bs-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -42,16 +71,16 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
             integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
             crossorigin="anonymous"></script>
-            
-    <script type="text/javascript" src="./carro.js">
 
-    </script>
-    <script type="text/javascript" src="./ruta.js">
+        <script type="text/javascript" src="./carro.js">
 
-    </script>
-    <script type="text/javascript" src="./main.js">
+        </script>
+        <script type="text/javascript" src="./ruta.js">
 
-    </script>
+        </script>
+        <script type="text/javascript" src="./main.js">
+
+        </script>
 </body>
 
 </html>
