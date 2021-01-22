@@ -60,7 +60,6 @@ class Ruta{
         console.log("Pre tiempo total: " + preTiempoTotal);
         this.setTiempoTotal(preTiempoTotal);
         return this.getTiempoTotal();
-
     }
 
 }

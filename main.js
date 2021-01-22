@@ -112,7 +112,7 @@ function resumenDelViaje(){
   imprimirDataEnPantalla("RESUMEN DEL VIAJE")
   imprimirDataEnPantalla("La velocidad maxima alcanzada fue de 120km/h");
   imprimirDataEnPantalla("La velocidad promedio a la que viajo el carro fue de: " + a + "km/h");
-  imprimirDataEnPantalla("Tiempo total del viaje: " + destino.calcularTiempoTotal(120, 7) + " horas");
+  imprimirDataEnPantalla("Tiempo total del viaje: " + destino.calcularTiempoTotal(120, 14) + " horas");
 }
 
 

@@ -125,17 +125,22 @@ class Carro {
   arrancar() {
     if (this.getInterruptor) {
       this.setClutch(nivelPresion[3]);
+      document.getElementById("clutch").style.backgroundColor = "#FFC874"
       this.setFrenoPedal(true);
+      document.getElementById("freno").style.backgroundColor = "#FFC874"
       imprimirDataEnPantalla("Freno del pedal esta: " + (this.getFrenoPedal() ? "Presionado" : "Sin presionar"));
       this.setFrenoMano(false);
       imprimirDataEnPantalla("Freno de mano esta: " + (this.getFrenoMano() ? "Activado" : "Desactivado"))
       this.setPalanca(estadosPalanca[2]);
       imprimirDataEnPantalla("La palanca esta en " + (this.getPalanca() == estadosPalanca[2] ? "primera" : "neutro"))
       this.setFrenoPedal(false);
+      document.getElementById("freno").style.backgroundColor = "#ffffff"
       imprimirDataEnPantalla("Freno del pedal esta: " + (this.getFrenoPedal() ? "Presionado" : "Sin presionar"));
       for (let i = 0; i < nivelPresion.length; i++) {
         this.setAcelerador(nivelPresion[i]);
+        document.getElementById("acelerador").style.backgroundColor = "#FFC874"
         this.setClutch(nivelPresion[nivelPresion.length - 1 - i]);
+        document.getElementById("clutch").style.backgroundColor = "#fffff"
       }
       imprimirDataEnPantalla("Acelerador: " + this.getAcelerador());
       imprimirDataEnPantalla("Clutch: " + this.getClutch());
@@ -157,7 +162,9 @@ class Carro {
   cambioDeCambiosAcelerar() {
     for (let i = 0; i < nivelPresion.length; i++) {
       this.setClutch(nivelPresion[i]);
+      document.getElementById("clutch").style.backgroundColor = "#FFC874"
       this.setAcelerador(nivelPresion[nivelPresion.length - 1 - i]);
+      document.getElementById("acelerador").style.backgroundColor = "#FFFFFF"
       //console.log(
       // "Acelerador: " + this.getAcelerador() + "  Clutch: " + this.getClutch()
       //);
@@ -169,7 +176,9 @@ class Carro {
 
     for (let i = 0; i < nivelPresion.length; i++) {
       this.setAcelerador(nivelPresion[i]);
+      document.getElementById("acelerador").style.backgroundColor = "#FFC874"
       this.setClutch(nivelPresion[nivelPresion.length - 1 - i]);
+      document.getElementById("clutch").style.backgroundColor = "#FFFFFF"
       //console.log(
       // "Acelerador: " + this.getAcelerador() + "  Clutch: " + this.getClutch()
       //);
@@ -179,19 +188,23 @@ class Carro {
   cambioDeCambiosFrenar() {
     for (let i = 0; i < nivelPresion.length; i++) {
       this.setClutch(nivelPresion[i]);
+      document.getElementById("acelerador").style.backgroundColor = "#FFFFFF"
       this.setAcelerador(nivelPresion[nivelPresion.length - 1 - i]);
+      document.getElementById("clutch").style.backgroundColor = "#FFC874"
       //console.log(
-      //"Acelerador: " + this.getAcelerador() + "  Clutch: " + this.getClutch()
-      //);
-    }
-    let palancaActual = this.getPalanca();
-    this.setPalanca(this.cambiosFrenar(this.getPalanca()));
-    //console.log("Se hace el cambio de palanca en " + palancaActual + " a: " + this.getPalanca());
-    imprimirDataEnPantalla("Se hace el cambio de palanca en " + palancaActual + " a: " + this.getPalanca());
-
-    for (let i = 0; i < nivelPresion.length; i++) {
-      this.setAcelerador(nivelPresion[i]);
-      this.setClutch(nivelPresion[nivelPresion.length - 1 - i]);
+        //"Acelerador: " + this.getAcelerador() + "  Clutch: " + this.getClutch()
+        //);
+      }
+      let palancaActual = this.getPalanca();
+      this.setPalanca(this.cambiosFrenar(this.getPalanca()));
+      //console.log("Se hace el cambio de palanca en " + palancaActual + " a: " + this.getPalanca());
+      imprimirDataEnPantalla("Se hace el cambio de palanca en " + palancaActual + " a: " + this.getPalanca());
+      
+      for (let i = 0; i < nivelPresion.length; i++) {
+        this.setAcelerador(nivelPresion[i]);
+        document.getElementById("acelerador").style.backgroundColor = "#FFC874"
+        this.setClutch(nivelPresion[nivelPresion.length - 1 - i]);
+        document.getElementById("clutch").style.backgroundColor = "#FFFFFF"
       //console.log(
       //"Acelerador: " + this.getAcelerador() + "  Clutch: " + this.getClutch()
       //);
@@ -200,23 +213,31 @@ class Carro {
 
   giroIzqAuto() {
     this.setDireccionalIzq(true);
+    document.getElementById("direccionalizq").style.backgroundColor = "#FFC874"
     imprimirDataEnPantalla("La direccional izquierda esta: " + (this.getDireccionalIzq() ? "encendida" : "apagada"));
     imprimirDataEnPantalla("Giro izquierda");
     this.setDireccionalIzq(false);
+    document.getElementById("direccionalizq").style.backgroundColor = "#FFFFFF"
     imprimirDataEnPantalla("La direccional izquierda esta: " + (this.getDireccionalIzq() ? "encendida" : "apagada"));
   }
 
   giroDerAuto() {
     imprimirDataEnPantalla("Se inicia un giro a la derecha");
     this.setDireccionalDer(true);
+    document.getElementById("direccionalder").style.backgroundColor = "#FFC874"
     imprimirDataEnPantalla("Se enciende la direccional derecha");
     imprimirDataEnPantalla("Giro completado");
     this.setDireccionalDer(false);
+    document.getElementById("direccionalder").style.backgroundColor = "#FFFFFF"
     imprimirDataEnPantalla("Se apaga la direccional derecha");
   }
 
   acelerar() {
+    document.getElementById("direccionalizq").style.backgroundColor = "#FFFFFF"
+    document.getElementById("direccionalder").style.backgroundColor = "#FFFFFF"
     this.setAcelerador(nivelPresion[3]);
+    document.getElementById("acelerador").style.backgroundColor = "#FFC874"
+    document.getElementById("freno").style.backgroundColor = "#FFFFFF"
     let a = 0;
     let velocidadActual = 0;
     let aleatorio = 0;
@@ -250,7 +271,9 @@ class Carro {
 
   frenar() {
     this.setAcelerador(nivelPresion[0]);
+    document.getElementById("direccionalizq").style.backgroundColor = "#FFFFFF"
     this.setFrenoPedal(true);
+    document.getElementById("freno").style.backgroundColor = "#FFC874"
     imprimirDataEnPantalla("Comienza a frenar");
     console.log("Comienza a frenar");
     let a = velocidadesCambioPalanca.length - 1;
@@ -322,7 +345,29 @@ class Carro {
   //   console.log("ESTO ES NUMERO ACTUAL PARADA DENTRO DEL METODO: ......... " + numeroActualParada);
   //   this.tiempoParada()
   // }
-  
+
+
+  // paradas(numParadas) {
+  //   console.log("Entro paradas" + numParadas);
+  //   let count = 0;
+  //   for (let j = 1; j <= numParadas; j++) {
+  //     if (count !== numParadas) {
+  //       for (let i = 0; i <= 1; i++) {
+  //         imprimirDataEnPantalla("Comienza recorrido hacia la parada: " + (i + 1));
+  //         console.log("PARADA NUMERO.......  " + i);
+  //         this.cambiarAestadoReposo();
+  //         imprimirDataEnPantalla("Llego a la parada");
+  //         //imprimirDataEnPantalla("Tiempo parada........... );          
+  //         count++
+  //         break
+  //       }
+  //       this.tiempoParada();
+  //     } else {
+  //       this.reversar();
+  //       resumenDelViaje();
+  //     };
+  //   }
+  // }
 
   paradas(numParadas) {
     console.log("Entro paradas" + numParadas);
@@ -340,22 +385,26 @@ class Carro {
     resumenDelViaje();
   }
 
+
   estacionarias(flag) {
     this.getDireccionalDer(flag);
     this.getDireccionalIzq(flag);
+    document.getElementById("estac").style.backgroundColor = "#FFC874"
     return "Se encienden las estacionarias";
   }
 
   cambiarAestadoReposo() {
     this.estacionarias(true);
     this.setClutch(nivelPresion[3]);
+    document.getElementById("clutch").style.backgroundColor = "#FFC874"
     this.setPalanca(estadosPalanca[1]);
     this.setFrenoMano(true);
     return "Se queda en estado de reposo"
   }
 
   validarEstadoReposo() {
-    return this.getPalanca() === estadosPalanca[1] && (this.getFrenoPedal() || this.getFrenoMano);
+    return this.getPalanca() === estadosPalanca[1] && (this.getFrenoPedal() || this.getFrenoMano),
+    document.getElementById("freno").style.backgroundColor = "#FFC874";
   }
 
   reversar() {
@@ -364,19 +413,25 @@ class Carro {
       this.estacionarias(true);
       imprimirDataEnPantalla("Se encienden las estacionarias")
       this.setClutch(nivelPresion[3]);
+      document.getElementById("acelerador").style.backgroundColor = "#FFFFFF"
+      document.getElementById("clutch").style.backgroundColor = "#FFC874"
       imprimirDataEnPantalla("Clutch: " + this.getClutch());
       this.setPalanca(estadosPalanca[0]);
       imprimirDataEnPantalla("Se coloca la palanca en: neutro");
       for (let i = 0; i < nivelPresion.length; i++) {
         this.setAcelerador(nivelPresion[i]);
+        document.getElementById("acelerador").style.backgroundColor = "#FFC874"
         this.setClutch(nivelPresion[nivelPresion.length - 1 - i]);
+        document.getElementById("clutch").style.backgroundColor = "#FFFFFF"
         //console.log("Acelerador: " + this.getAcelerador() + "  Clutch: " + this.getClutch());
       }
       imprimirDataEnPantalla("Reversando....");
 
       for (let i = 0; i < nivelPresion.length; i++) {
         this.setClutch(nivelPresion[i]);
+        document.getElementById("clutch").style.backgroundColor = "#FFC874"
         this.setAcelerador(nivelPresion[nivelPresion.length - 1 - i]);
+        document.getElementById("acelerador").style.backgroundColor = "#FFFFFF"
         console.log(
           "Acelerador: " + this.getAcelerador() + "  Clutch: " + this.getClutch()
         );
@@ -384,6 +439,12 @@ class Carro {
       this.cambiarAestadoReposo();
       imprimirDataEnPantalla("Ya se coloco el freno de mano, el carro esta parqueado");
       this.setInterruptor(false);
+      document.getElementById("clutch").style.backgroundColor = "#FFFFFF"
+      document.getElementById("acelerador").style.backgroundColor = "#FFFFFF"
+      document.getElementById("direccionalizq").style.backgroundColor = "#FFFFFF"
+      document.getElementById("direccionalder").style.backgroundColor = "#FFFFFF"
+      document.getElementById("estac").style.backgroundColor = "#FFFFFF"
+      document.getElementById("freno").style.backgroundColor = "#FFFFFF"
       imprimirDataEnPantalla("Se apago el carro, ya puede bajar");
     } else {
       imprimirDataEnPantalla("No se puede reversar en este momento, se requiere que el carro esté en neutro y en estado de reposo");
@@ -419,7 +480,7 @@ class Carro {
   //         console.log("ESTO ES FUNCION PARADAS............    " + numeroParada);
   //         console.log("ESTO ES NUMEROACTUALPARADAS:  ............    " + funcionParadas())
   //       };
-  
+
   //       decrecer -= 1000
   //       stop += 1000;    
   //     }, 1000);
@@ -432,23 +493,24 @@ class Carro {
     let decrecer = tiempoParadas;
 
     let tiempo = setInterval(() => {
-      const segundos = decrecer/1000
+      const segundos = decrecer / 1000
 
-      document.getElementById("botonPresionar").click();  
+      document.getElementById("botonPresionar").click();
       document.getElementById('TextoModal').innerHTML = (`${segundos}`);
 
       //document.getElementById('contador').innerHTML = (`${segundos}`);
-  
-        if(stop === tiempoParadas){
-          clearInterval(tiempo);
-          document.getElementById("cerrar").click();
-        }
-  
-        decrecer -= 1000
-        stop += 1000;
-        console.log(stop);
-        
-      }, 1000);
+
+      if (stop === tiempoParadas) {
+        clearInterval(tiempo);
+      document.getElementById('cerrar').click();
+
+      }
+
+      decrecer -= 1000
+      stop += 1000;
+      console.log(stop);
+
+    }, 1000);
 
   }
 
@@ -472,9 +534,8 @@ class Carro {
     direccion(false);
     imprimirDataEnPantalla(`Se apaga la direccional ${texto}`);
   }*/
-
-  cabrilla() { }
-  apagar() { }
-  velocidadAprox() { }
-  velocidadMax() { }
+  // cabrilla() { }
+  // apagar() { }
+  // velocidadAprox() { }
+  // velocidadMax() { }
 }
