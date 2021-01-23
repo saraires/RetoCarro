@@ -51,8 +51,8 @@ function encender() {
 }
 
 
-function funcionPrincipal() {
-  /*
+/*function funcionPrincipal() {
+  
   console.log("Encender: ");
   //data.push(ford.interruptor(true));
   //data.push(ford.arrancar());
@@ -75,10 +75,8 @@ function funcionPrincipal() {
   ford.paradas();
   console.log("h " + ford.cambiosFrenar(5));
   console.log("Reversar ");
-  ford.reversar();*/
-
-
-}
+  ford.reversar();
+}*/
 
 function funcionRuta() {
 
